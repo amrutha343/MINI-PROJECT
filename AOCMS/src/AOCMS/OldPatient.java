@@ -1,0 +1,1353 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package AOCMS;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+
+import java.awt.*;
+import AOCMS.option;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import javax.swing.Timer;
+import java.awt.event.ActionListener;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import static java.awt.print.Printable.NO_SUCH_PAGE;
+import static java.awt.print.Printable.PAGE_EXISTS;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
+
+/**
+ *
+ * @author amrutha sujith
+ */
+public class OldPatient extends javax.swing.JFrame  implements Printable {
+Connection cn=null;
+Statement st=null;
+ResultSet rs=null;
+String sql="";
+
+
+    /**
+     * Creates new form OldPatient
+     */
+    public OldPatient() {
+        initComponents();
+    }
+    int tokenvalue;
+public OldPatient(int tokenvalue)
+{
+     initComponents();
+     this.tokenvalue=tokenvalue;
+}
+
+    
+    @Override
+    public int print(Graphics g, PageFormat pf, int page) throws PrinterException {
+    
+        if (page > 0) { /* We have only one page, and 'page' is zero-based */
+            return NO_SUCH_PAGE;
+        }
+ 
+        /* User (0,0) is typically outside the imageable area, so we must
+         * translate by the X and Y values in the PageFormat to avoid clipping
+         */
+        Graphics2D g2d = (Graphics2D)g;
+        g2d.translate(pf.getImageableX(), pf.getImageableY());
+ 
+        /* Now we perform our rendering */
+        
+    g.setFont(new Font("TimesRoman", Font.BOLD, 12)); 
+    g.drawString("      GOVERNMENT MEDICAL COLLEGE" ,100,100);
+    g.drawString("                       Mulankunnathukavu," ,100,110);
+    g.drawString("                       Thrissur, 680531" ,100,120);
+    g.setFont(new Font("TimesRoman", Font.PLAIN, 12)); 
+    g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,125);
+    g.drawString(""+op_unit.getSelectedItem()+"           |    TOKEN    |         "+date.getText(),100,135);
+    g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,145);
+    g.drawString("NAME                    :"+name.getText(),100,155);
+    g.drawString("AGE                       :"+age.getText(),100,165);
+    g.drawString("CR NUMBER         :"+cr_number.getText(),100,175);
+    g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,180);
+    g.setFont(new Font("TimesRoman",Font.PLAIN, 30)); 
+    g.drawString("              "+(tokenvalue),100,205);   
+    g.setFont(new Font("TimesRoman", Font.PLAIN, 8)); 
+    g.drawString("                                     TOKEN NUMBER",100,215);
+    g.setFont(new Font("TimesRoman", Font.PLAIN, 12)); 
+    g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,220);
+    g.setFont(new Font("TimesRoman", Font.BOLD, 12)); 
+    g.drawString("     Vidya Academy of Science & Technology",100,230);
+    g.drawString(       "                  P.O. Thalakottukara ",100,240 );
+    g.drawString(       "                     Thrissur-680501",100,250 );
+    g.setFont(new Font("TimesRoman", Font.PLAIN, 12)); 
+    g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,255);
+
+ 
+        /* tell the caller that this page is part of the printed document */
+        return PAGE_EXISTS;
+      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+
+
+
+    public class progress implements ActionListener
+    {
+        
+        public void actionPerformed(ActionEvent evt)
+        {
+            int n=jProgressBar1.getValue();
+            if(n<100)
+            {
+                n++;
+            }
+              else
+        {
+            timer.stop();
+            jProgressBar1.setMaximum(0);
+            option op=new option();
+          try{
+    PrintWriter writer = new PrintWriter("token.txt", "UTF-8");
+    writer.println(tokenvalue);
+    writer.close();
+      
+    
+} catch (IOException e) {
+   // do something
+}
+        new option(tokenvalue).setVisible(true);
+        
+        dispose();
+        
+        
+        
+        }
+            jProgressBar1.setValue(n);
+            
+            
+        }
+
+       
+      
+    }
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        bg1 = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        update = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        print1 = new javax.swing.JLabel();
+        print = new javax.swing.JLabel();
+        clear = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        save = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        sep1 = new javax.swing.JSeparator();
+        name = new javax.swing.JTextField();
+        label1 = new javax.swing.JLabel();
+        label3 = new javax.swing.JLabel();
+        label4 = new javax.swing.JLabel();
+        label5 = new javax.swing.JLabel();
+        sep4 = new javax.swing.JSeparator();
+        phone = new javax.swing.JTextField();
+        sep3 = new javax.swing.JSeparator();
+        cr_number = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        address = new javax.swing.JTextArea();
+        label7 = new javax.swing.JLabel();
+        sep5 = new javax.swing.JSeparator();
+        op_number = new javax.swing.JTextField();
+        token = new javax.swing.JLabel();
+        token1 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        label8 = new javax.swing.JLabel();
+        label9 = new javax.swing.JLabel();
+        op_unit = new javax.swing.JComboBox<>();
+        reference = new javax.swing.JComboBox<>();
+        jPanel4 = new javax.swing.JPanel();
+        label10 = new javax.swing.JLabel();
+        male = new javax.swing.JRadioButton();
+        female = new javax.swing.JRadioButton();
+        label2 = new javax.swing.JLabel();
+        sep2 = new javax.swing.JSeparator();
+        date = new javax.swing.JTextField();
+        label12 = new javax.swing.JLabel();
+        sep8 = new javax.swing.JSeparator();
+        sep7 = new javax.swing.JSeparator();
+        age = new javax.swing.JTextField();
+        previous_visit = new javax.swing.JTextField();
+        label6 = new javax.swing.JLabel();
+        label11 = new javax.swing.JLabel();
+        Casuality = new javax.swing.JRadioButton();
+        OP = new javax.swing.JRadioButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        op_list = new javax.swing.JComboBox<>();
+        label13 = new javax.swing.JLabel();
+        Speciality = new javax.swing.JRadioButton();
+        speciality_list = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setForeground(new java.awt.Color(153, 153, 153));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel18.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel18.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel18.setText("| _ |");
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 0, 40, 30));
+
+        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel17.setText("| AOCMS | EXISTING PATIENT |");
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 30));
+
+        jLabel16.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel16.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel16.setText("| X |");
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel16MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 0, 50, 30));
+
+        jLabel25.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel25.setText("| Government Medical College, Mulankunnathukavu  Thrissur |");
+        jPanel3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 410, 30));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, -1));
+
+        jPanel1.setBackground(new java.awt.Color(0, 102, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel7.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel7.setForeground(new java.awt.Color(153, 153, 153));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel23.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel23.setText("| Powered By: -CSE Vidya Academy Of Science And Technology, Thalakkottukara Thrissur |");
+        jPanel7.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 570, 20));
+
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 1160, 20));
+
+        jLabel14.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 48)); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AOCMS/medlogo.png"))); // NOI18N
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 100, 120));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AOCMS/vidya2.png"))); // NOI18N
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, 180, 130));
+
+        update.setBackground(new java.awt.Color(51, 51, 51));
+        update.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        update.setForeground(new java.awt.Color(0, 0, 102));
+        update.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        update.setText("Update");
+        update.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
+        update.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateMouseClicked(evt);
+            }
+        });
+        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, 120, 50));
+
+        jLabel3.setFont(new java.awt.Font("Poor Richard", 0, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 0, 0));
+        jLabel3.setText("Automated OP Counter Management System");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AOCMS/logo.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 140, 120));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AOCMS/1491425454_back_on_top.png"))); // NOI18N
+        jLabel6.setToolTipText("Back to the Main Page");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 560, 30, 50));
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel7.setText("Back");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 600, -1, -1));
+
+        print1.setBackground(new java.awt.Color(51, 51, 51));
+        print1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        print1.setForeground(new java.awt.Color(0, 0, 102));
+        print1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        print1.setText("Print");
+        print1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
+        print1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        print1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                print1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(print1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 570, 120, 50));
+
+        print.setBackground(new java.awt.Color(51, 51, 51));
+        print.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        print.setForeground(new java.awt.Color(0, 0, 102));
+        print.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        print.setText("Print");
+        print.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
+        print.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        print.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                printMouseClicked(evt);
+            }
+        });
+        jPanel1.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 570, 120, 50));
+
+        clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AOCMS/1491430428_Backspace_erase_delete_back.png"))); // NOI18N
+        clear.setToolTipText("Clear the selections & texts completely");
+        clear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearMouseClicked(evt);
+            }
+        });
+        jPanel1.add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 560, 50, 50));
+
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel10.setText("Clear");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 600, 30, -1));
+
+        jProgressBar1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 520, 10));
+
+        save.setBackground(new java.awt.Color(51, 51, 51));
+        save.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        save.setForeground(new java.awt.Color(0, 0, 102));
+        save.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        save.setText("Save");
+        save.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
+        save.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        save.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveMouseClicked(evt);
+            }
+        });
+        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, 120, 50));
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(sep1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 190, 10));
+
+        name.setBackground(new java.awt.Color(204, 204, 204));
+        name.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        name.setBorder(null);
+        name.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nameFocusGained(evt);
+            }
+        });
+        name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameActionPerformed(evt);
+            }
+        });
+        jPanel2.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 190, 30));
+
+        label1.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
+        label1.setForeground(new java.awt.Color(0, 0, 102));
+        label1.setText("Name:");
+        jPanel2.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+
+        label3.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
+        label3.setForeground(new java.awt.Color(0, 0, 102));
+        label3.setText("CR Number:");
+        jPanel2.add(label3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+
+        label4.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
+        label4.setForeground(new java.awt.Color(0, 0, 102));
+        label4.setText("Phone:");
+        jPanel2.add(label4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+
+        label5.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
+        label5.setForeground(new java.awt.Color(0, 0, 102));
+        label5.setText("Address:");
+        jPanel2.add(label5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        jPanel2.add(sep4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 190, 10));
+
+        phone.setBackground(new java.awt.Color(204, 204, 204));
+        phone.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        phone.setBorder(null);
+        phone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                phoneFocusGained(evt);
+            }
+        });
+        phone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneActionPerformed(evt);
+            }
+        });
+        jPanel2.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 190, 30));
+        jPanel2.add(sep3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 190, 10));
+
+        cr_number.setBackground(new java.awt.Color(204, 204, 204));
+        cr_number.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        cr_number.setBorder(null);
+        cr_number.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cr_numberFocusGained(evt);
+            }
+        });
+        cr_number.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cr_numberActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cr_number, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 190, 30));
+
+        address.setBackground(new java.awt.Color(204, 204, 204));
+        address.setColumns(20);
+        address.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        address.setLineWrap(true);
+        address.setRows(5);
+        address.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 18, 25)));
+        jScrollPane1.setViewportView(address);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 380, 90));
+
+        label7.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
+        label7.setForeground(new java.awt.Color(0, 0, 102));
+        label7.setText("OP Number:");
+        jPanel2.add(label7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        jPanel2.add(sep5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 190, 10));
+
+        op_number.setBackground(new java.awt.Color(204, 204, 204));
+        op_number.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        op_number.setBorder(null);
+        op_number.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                op_numberFocusGained(evt);
+            }
+        });
+        op_number.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                op_numberActionPerformed(evt);
+            }
+        });
+        jPanel2.add(op_number, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 190, 30));
+
+        token.setBackground(new java.awt.Color(102, 18, 25));
+        token.setFont(new java.awt.Font("Tahoma", 1, 60)); // NOI18N
+        token.setForeground(new java.awt.Color(0, 102, 102));
+        token.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        token.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        jPanel2.add(token, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 160, 180));
+
+        token1.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
+        token1.setForeground(new java.awt.Color(102, 0, 102));
+        token1.setText("Token Number");
+        jPanel2.add(token1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 110, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 480, 340));
+
+        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        label8.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
+        label8.setForeground(new java.awt.Color(0, 0, 102));
+        label8.setText("Refered By:");
+        jPanel5.add(label8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+
+        label9.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
+        label9.setForeground(new java.awt.Color(0, 0, 102));
+        label9.setText("OP Unit:");
+        jPanel5.add(label9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+
+        op_unit.setBackground(new java.awt.Color(204, 204, 204));
+        op_unit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Oncology", "Chest Pulmonary Medicine", "ART" }));
+        op_unit.setSelectedIndex(-1);
+        op_unit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                op_unitActionPerformed(evt);
+            }
+        });
+        jPanel5.add(op_unit, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 220, -1));
+
+        reference.setBackground(new java.awt.Color(204, 204, 204));
+        reference.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Private", "Government", "Others", "" }));
+        reference.setSelectedIndex(-1);
+        jPanel5.add(reference, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 220, -1));
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 430, 480, 130));
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        label10.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
+        label10.setForeground(new java.awt.Color(0, 0, 102));
+        label10.setText("Gender: ");
+        jPanel4.add(label10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
+
+        male.setBackground(new java.awt.Color(204, 204, 204));
+        male.setFont(new java.awt.Font("High Tower Text", 0, 18)); // NOI18N
+        male.setText("Male");
+        male.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                maleFocusGained(evt);
+            }
+        });
+        male.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maleActionPerformed(evt);
+            }
+        });
+        jPanel4.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, -1));
+
+        female.setBackground(new java.awt.Color(204, 204, 204));
+        female.setFont(new java.awt.Font("High Tower Text", 0, 18)); // NOI18N
+        female.setText("Female");
+        female.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                femaleFocusGained(evt);
+            }
+        });
+        jPanel4.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
+
+        label2.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
+        label2.setForeground(new java.awt.Color(0, 0, 102));
+        label2.setText("Previous visit:");
+        jPanel4.add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, -1, -1));
+        jPanel4.add(sep2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 120, 10));
+
+        date.setBackground(new java.awt.Color(204, 204, 204));
+        date.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        date.setBorder(null);
+        date.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                dateFocusGained(evt);
+            }
+        });
+        date.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateActionPerformed(evt);
+            }
+        });
+        jPanel4.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 120, 30));
+
+        label12.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
+        label12.setForeground(new java.awt.Color(0, 0, 102));
+        label12.setText("Age:");
+        jPanel4.add(label12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jPanel4.add(sep8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 120, 10));
+        jPanel4.add(sep7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 120, 10));
+
+        age.setBackground(new java.awt.Color(204, 204, 204));
+        age.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        age.setBorder(null);
+        age.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ageFocusGained(evt);
+            }
+        });
+        age.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ageActionPerformed(evt);
+            }
+        });
+        jPanel4.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 120, 30));
+
+        previous_visit.setBackground(new java.awt.Color(204, 204, 204));
+        previous_visit.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        previous_visit.setBorder(null);
+        previous_visit.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                previous_visitFocusGained(evt);
+            }
+        });
+        previous_visit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previous_visitActionPerformed(evt);
+            }
+        });
+        jPanel4.add(previous_visit, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 120, 30));
+
+        label6.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
+        label6.setForeground(new java.awt.Color(0, 0, 102));
+        label6.setText("Date:");
+        jPanel4.add(label6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        label11.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
+        label11.setForeground(new java.awt.Color(0, 0, 102));
+        label11.setText("Category");
+        jPanel4.add(label11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+
+        Casuality.setBackground(new java.awt.Color(204, 204, 204));
+        Casuality.setFont(new java.awt.Font("High Tower Text", 0, 18)); // NOI18N
+        Casuality.setText("Casuality");
+        Casuality.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CasualityFocusGained(evt);
+            }
+        });
+        Casuality.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CasualityActionPerformed(evt);
+            }
+        });
+        jPanel4.add(Casuality, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, 50));
+
+        OP.setBackground(new java.awt.Color(204, 204, 204));
+        OP.setFont(new java.awt.Font("High Tower Text", 0, 18)); // NOI18N
+        OP.setText("OP");
+        OP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                OPFocusGained(evt);
+            }
+        });
+        OP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OPActionPerformed(evt);
+            }
+        });
+        jPanel4.add(OP, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 70, 50));
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
+
+        op_list.setBackground(new java.awt.Color(204, 204, 204));
+        op_list.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NULL", "LYMPHOMA (NHL, DLBCL,HODGKIN’S DISEASE)", "SARCOMA (SYNOVIAL SARCOMA, LIPOSARCOMA)", "MALIGNANT MELANOMA", "SKIN", "LEUKEMIA(ALL, AML, CML,CLL)", "LUNG(BRONCHOGENIC CARCINOMA)", "ESOPHAGUS", "STOMACH\t", "GE JUNCTION", "OG JUNCTION", "CAECUM", "RECTUM", "RECTOSIGMOID", "ANAL CANAL", "ANUS", "COLON", "BLADDER(GALL BLADDER, URINARY BLADDER)", "PROSTATE", "RENAL CELL CARCINOMA(KIDNEY)", "TESTIS", "PENIS", "HEPATO CELLULAR CARCINOMA(LIVER)", "PERIAMPULLARY CARCINOMA (BILE DUCT)", "MULTIPLE MYELOMA", "UNKNOWN PRIMARY", "INTESINES(SMALL INTESTINE, LARGE INTESTINE)", "THYROID GLAND", " " }));
+        op_list.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                op_listActionPerformed(evt);
+            }
+        });
+        jPanel4.add(op_list, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 350, -1));
+
+        label13.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
+        label13.setForeground(new java.awt.Color(0, 0, 102));
+        label13.setText("Diagnosis:");
+        jPanel4.add(label13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+
+        Speciality.setBackground(new java.awt.Color(204, 204, 204));
+        Speciality.setFont(new java.awt.Font("High Tower Text", 0, 18)); // NOI18N
+        Speciality.setText("Speciality");
+        Speciality.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                SpecialityFocusGained(evt);
+            }
+        });
+        Speciality.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SpecialityActionPerformed(evt);
+            }
+        });
+        jPanel4.add(Speciality, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 120, 50));
+
+        speciality_list.setBackground(new java.awt.Color(204, 204, 204));
+        speciality_list.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NULL", "LIP", "ORAL CAVITY-  TONGUE", "ORAL CAVITY-  FLOOR OF MOUTH", "ORAL CAVITY-   PALATE", "ORAL CAVITY-  CHEEK MUCOSA", "ORAL CAVITY-   BUCCAL MUCOSA", "ORAL CAVITY-   RETROMOLAR AREA", "PHARYNX-  TONSIL", "PHARYNX-   UVULA", "PHARYNX-  VALLECULA", "PHARYNX-  OROPHARYNX", "PHARYNX-   NASOPHARYNX", "PHARYNX-  PYRIFORM SINUS", "PHARYNX-  POST CRICOID", "PHARYNX-  HYPOPHARYNX", "LARYNX-   EPIGLOTTIS", "LARYNX-    GLOTTIS", "LARYNX-   SUPRAGLOTTIS", "NASAL CAVITY", "MAXILLARY SINUS", "PAROTID GLAND", "SUBMANDIBULAR GLAND", "SUBLINGUAL GLAND", "SALIVARY GLAND", "VULVA", "VAGINA", "CERVIX", "ENDOMETRIUM", "UTERUS", "OVARY", "FALLOPIAN TUBE", "PLACENTA", "BREAST", "BRAIN-  ASTROCYTOMA", "BRAIN-  GLIOBLASTOMA MULTIFORME", "BRAIN-  MEDULOBLASTOMA", " " }));
+        speciality_list.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                speciality_listActionPerformed(evt);
+            }
+        });
+        jPanel4.add(speciality_list, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 350, -1));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 480, 200));
+
+        jLabel2.setBackground(new java.awt.Color(102, 0, 51));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AOCMS/ddd.jpg"))); // NOI18N
+        jLabel2.setOpaque(true);
+        jLabel2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jLabel2FocusGained(evt);
+            }
+        });
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1070, 660));
+
+        jLabel8.setText("jLabel8");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 100, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
+
+        setSize(new java.awt.Dimension(1058, 680));
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+        setState(ICONIFIED);
+    }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+   String timeStamp = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
+        try{
+    PrintWriter writer = new PrintWriter("date.txt", "UTF-8");
+    writer.println(timeStamp);
+    writer.close();
+       } catch (IOException e) {}
+        
+        System.exit(0);
+    }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+
+        option op=new option();
+        op.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void printMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printMouseClicked
+jLabel16.setVisible(false);  
+
+  
+    print1.setVisible(true);  
+        {
+            timer.start();
+
+        }
+   
+   
+   
+   try
+{
+sql="update patients set  date='"+date.getText()+"'  where op_number='"+op_number.getText()+"';";
+st = cn.createStatement();
+st.executeUpdate(sql);
+
+		
+	sql="select * from patients;";
+	st=cn.createStatement();
+	rs=st.executeQuery(sql);
+
+        
+  }
+
+
+catch (Exception e)
+{
+JOptionPane.showMessageDialog(null,e.toString());
+}
+   
+   if(op_unit.getSelectedItem().equals("Oncology"))
+   {
+        tokenvalue++;
+token.setVisible(true);
+token1.setVisible(true);
+token.setText(""+tokenvalue);
+       
+      PrinterJob job = PrinterJob.getPrinterJob();
+         job.setPrintable(this);
+         boolean ok = job.printDialog();
+         if (ok) {
+             try {
+                  job.print();
+             } catch (PrinterException ex) {
+              /* The job did not successfully complete */
+             }
+         } 
+   }
+   
+
+    
+
+   
+   
+      
+    }//GEN-LAST:event_printMouseClicked
+
+    private void clearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearMouseClicked
+        // TODO add your handling code here:
+
+        name.setText("");
+        date.setText("");
+        cr_number.setText("");
+        op_number.setText("");
+        phone.setText("");
+        address.setText("");
+        male.setSelected(false);
+        Casuality.setSelected(false);
+        OP.setSelected(false);
+        female.setSelected(false);
+        age.setText("");
+        previous_visit.setText("");
+        reference.setSelectedIndex(-1);
+        op_unit.setSelectedIndex(-1);
+    }//GEN-LAST:event_clearMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+timer = new Timer(50,new progress());        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jLabel2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabel2FocusGained
+         
+        
+    }//GEN-LAST:event_jLabel2FocusGained
+
+    private void nameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameFocusGained
+      
+
+    }//GEN-LAST:event_nameFocusGained
+
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
+        // TODO add your handling code here:  
+    }//GEN-LAST:event_nameActionPerformed
+
+    private void phoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneFocusGained
+
+    private void phoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneActionPerformed
+
+    private void cr_numberFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cr_numberFocusGained
+           // TODO add your handling code here:
+    }//GEN-LAST:event_cr_numberFocusGained
+
+    private void cr_numberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cr_numberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cr_numberActionPerformed
+
+    private void dateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dateFocusGained
+             
+    }//GEN-LAST:event_dateFocusGained
+
+    private void dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateActionPerformed
+
+    private void ageFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ageFocusGained
+       // TODO add your handling code here:
+    }//GEN-LAST:event_ageFocusGained
+
+    private void ageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ageActionPerformed
+
+    private void maleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_maleFocusGained
+
+               // TODO add your handling code here:
+    }//GEN-LAST:event_maleFocusGained
+
+    private void maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_maleActionPerformed
+
+    private void femaleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_femaleFocusGained
+
+       
+        // TODO add your handling code here:
+    }//GEN-LAST:event_femaleFocusGained
+
+    private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
+jLabel10.setVisible(false);
+clear.setVisible(false);
+        
+        sep1.setVisible(false);
+sep2.setVisible(false);
+sep3.setVisible(false);
+sep4.setVisible(false);
+sep5.setVisible(false);
+sep7.setVisible(false);
+sep8.setVisible(false);
+
+try
+{
+int ans=0;
+ans=JOptionPane.showConfirmDialog(null,"Do you wish to save the changes?","AOCMS",
+JOptionPane.YES_NO_OPTION);
+
+if(ans==JOptionPane.YES_OPTION)
+{
+    
+       if(male.isSelected())
+       {        jLabel4.setText("M");
+       }
+       else if(female.isSelected())
+       {
+           jLabel4.setText("F");
+       }
+
+   String category;    
+       if(Casuality.isSelected())
+       {        jLabel5.setText("Casuality");
+       jLabel8.setText("NULL");
+       }
+       else if(OP.isSelected())
+       {
+           jLabel5.setText("OP");
+           jLabel8.setText((String) op_list.getSelectedItem());
+       }
+       else if(Speciality.isSelected())
+       {
+           jLabel5.setText("Speciality");
+            jLabel8.setText((String) speciality_list.getSelectedItem());
+       }
+
+ if(cr_number.getText().equals("NULL"))
+                {
+                    
+                 
+       sql="update patients set name='"+name.getText()+"',cr_number="+cr_number.getText()+",op_number='"+op_number.getText()+"',phone='"+phone.getText()+"',address='"+address.getText()+"',age="+age.getText()+",date='"+date.getText()+"',Previous_visit='"+previous_visit.getText()+"',Category='"+jLabel5.getText()+"', gender='"+jLabel4.getText()+"', Referenced_By='"+(String)reference.getSelectedItem()+"',op_unit='"+(String)op_unit.getSelectedItem()+"',Diagnosis='"+jLabel8.getText()+"' where op_number='"+op_number.getText()+"';";		
+
+		     }
+                else
+                {
+                   
+sql="update patients set name='"+name.getText()+"',cr_number='"+cr_number.getText()+"',op_number='"+op_number.getText()+"',phone='"+phone.getText()+"',address='"+address.getText()+"',age="+age.getText()+",date='"+date.getText()+"',Previous_visit='"+previous_visit.getText()+"',Category='"+jLabel5.getText()+"', gender='"+jLabel4.getText()+"', Referenced_By='"+(String)reference.getSelectedItem()+"',op_unit='"+(String)op_unit.getSelectedItem()+"',Diagnosis='"+jLabel8.getText()+"' where op_number='"+op_number.getText()+"';";		
+ }	st = cn.createStatement();
+st.executeUpdate(sql);
+
+		
+	sql="select * from patients;";
+	st=cn.createStatement();
+	rs=st.executeQuery(sql);
+
+        
+       
+name.setEditable(false);
+        date.setEditable(false);
+        op_number.setEditable(false);
+        cr_number.setEditable(false);
+        previous_visit.setEditable(false);
+        phone.setEditable(false);
+        address.setEditable(false);
+        male.setEnabled(false);
+        female.setEnabled(false);
+        OP.setEnabled(false);
+        Casuality.setEnabled(false);
+        age.setEditable(false);
+        date.setEditable(false);
+        reference.setEnabled(false);
+        op_unit.setEnabled(false);
+        save.setVisible(false);
+        update.setVisible(true);
+        op_list.setEnabled(false);
+        speciality_list.setEnabled(false);
+ }
+  }
+
+
+catch (Exception e)
+{
+JOptionPane.showMessageDialog(null,e.toString());
+}
+
+       
+    }//GEN-LAST:event_saveMouseClicked
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+jLabel10.setVisible(false);
+clear.setVisible(false);
+        
+        jLabel4.setVisible(false);
+jLabel5.setVisible(false);
+
+sep1.setVisible(false);
+sep2.setVisible(false);
+sep3.setVisible(false);
+sep4.setVisible(false);
+sep5.setVisible(false);
+sep7.setVisible(false);
+sep8.setVisible(false);
+
+
+        jLabel8.setVisible(false);
+        
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+bg1.add(male);
+bg1.add(female);
+save.setVisible(false);
+print1.setVisible(false);
+token.setVisible(false);
+token1.setVisible(false);
+        name.setEditable(false);
+        date.setEditable(false);
+        op_number.setEditable(false);
+        cr_number.setEditable(false);
+        previous_visit.setEditable(false);
+        op_list.setEditable(false);
+        speciality_list.setEnabled(false);
+        phone.setEditable(false);
+        address.setEditable(false);
+        male.setEnabled(false);
+        female.setEnabled(false);
+        OP.setEnabled(false);
+        Casuality.setEnabled(false);
+        Speciality.setEnabled(false);
+        age.setEditable(false);
+        date.setEditable(false);
+        reference.setEnabled(false);
+        op_unit.setEnabled(false);
+        op_unit.setSelectedIndex(-1);
+        op_list.setEnabled(false);
+        buttonGroup1.add(Casuality);
+        buttonGroup1.add(OP);
+        buttonGroup1.add(Speciality);
+   
+try
+{
+   //Establish connection to the MySQL Database
+Class.forName("java.sql.Driver");	
+cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/aocms","root","amrutha1996*");
+
+	//Below is the code for creating an sql statement having all records to browse
+sql="select * from patients;";
+	st=cn.createStatement();
+	rs=st.executeQuery(sql);
+	rs.next();
+	
+	
+String crno="";
+crno=JOptionPane.showInputDialog(null,"Please enter the CR Number or the OP Number","AOCMS",JOptionPane.QUESTION_MESSAGE);
+
+
+
+if(crno!=null){
+sql="select * from patients where cr_number='"+crno+"' or op_number='"+crno+"';";
+st=cn.createStatement();
+rs=st.executeQuery(sql);
+rs.next(); 
+if(crno.equals(rs.getString("cr_number"))||crno.equals(rs.getString("op_number")))
+        {
+name.setText(rs.getString("name"));
+cr_number.setText(rs.getString("cr_number"));
+if(cr_number.getText().equals(""))
+    cr_number.setText("NULL");
+if(cr_number.getText().equals("NULL"))
+    cr_number.setEditable(false);
+op_number.setText(rs.getString("op_number"));
+phone.setText(rs.getString("phone"));
+address.setText(rs.getString("address"));
+if(rs.getString("gender").equals("M"))
+{
+    male.setSelected(true);
+    male.setForeground(Color.black);
+}
+else
+{
+    female.setSelected(true);
+    female.setForeground(Color.black);
+}
+if(rs.getString("category").equals("Casuality"))
+{
+    Casuality.setSelected(true);
+    Casuality.setForeground(Color.black);
+    op_list.setVisible(false);
+    speciality_list.setVisible(false);
+    
+}
+else if(rs.getString("category").equals("OP"))
+{
+    OP.setSelected(true);
+    OP.setForeground(Color.black);
+    op_list.setVisible(true);
+    op_list.setSelectedItem(rs.getString("Diagnosis"));
+    speciality_list.setVisible(false);
+    
+}
+else if(rs.getString("category").equals("Speciality"))
+{
+    Speciality.setSelected(true);
+    Speciality.setForeground(Color.black);
+    op_list.setVisible(false);
+    speciality_list.setVisible(true);
+    speciality_list.setSelectedItem(rs.getString("Diagnosis"));
+    
+}
+
+age.setText(rs.getString("age"));
+date.setText(""+timeStamp);
+previous_visit.setText(rs.getString("date"));
+reference.setSelectedItem(rs.getString("referenced_by"));
+op_unit.setSelectedItem(rs.getString("op_unit"));
+
+
+        }
+
+ 
+}
+else{
+        option op=new option();
+        op.setVisible(true);
+        this.dispose();
+             
+}
+
+}
+//To prevent the program from crashing if there are anyother errors and to find out details of the error
+catch(Exception e)
+{
+   
+JOptionPane.showMessageDialog(null,"Please enter a valid CR number or an OP number","AOCMS",JOptionPane.ERROR_MESSAGE);	
+    option op=new option();
+        op.setVisible(true);
+        this.dispose();
+             
+}
+
+    }//GEN-LAST:event_formComponentShown
+
+    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
+jLabel10.setVisible(true);
+clear.setVisible(true);
+        
+        sep1.setVisible(true);
+sep2.setVisible(true);
+sep3.setVisible(true);
+sep4.setVisible(true);
+sep5.setVisible(true);
+sep7.setVisible(true);
+sep8.setVisible(true);
+        name.setEditable(true);
+        phone.setEditable(true);
+        address.setEditable(true);
+        male.setEnabled(true);
+        female.setEnabled(true);
+        Casuality.setEnabled(true);
+        Speciality.setEnabled(true);
+         OP.setEnabled(true);     
+        age.setEditable(true);
+        reference.setEnabled(true);
+        
+         male.setForeground(Color.black);
+          female.setForeground(Color.black);
+           OP.setForeground(Color.black);
+          Casuality.setForeground(Color.black);
+          Speciality.setForeground(Color.black);
+         if(OP.isSelected())
+         {op_list.setEnabled(true);
+         op_list.setVisible(true);
+         speciality_list.setVisible(false);}
+            else if(Speciality.isSelected())
+         {speciality_list.setEnabled(true);
+         speciality_list.setVisible(true);
+         op_list.setVisible(false);}
+save.setVisible(true);
+     update.setVisible(false);
+   
+    }//GEN-LAST:event_updateMouseClicked
+
+    private void print1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_print1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_print1MouseClicked
+
+    private void previous_visitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_previous_visitFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_previous_visitFocusGained
+
+    private void previous_visitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previous_visitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_previous_visitActionPerformed
+
+    private void CasualityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CasualityFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CasualityFocusGained
+
+    private void CasualityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CasualityActionPerformed
+op_list.setVisible(false);
+speciality_list.setVisible(false);// TODO add your handling code here:
+    }//GEN-LAST:event_CasualityActionPerformed
+
+    private void OPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_OPFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OPFocusGained
+
+    private void op_numberFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_op_numberFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_op_numberFocusGained
+
+    private void op_numberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_op_numberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_op_numberActionPerformed
+
+    private void op_unitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_op_unitActionPerformed
+
+
+    }//GEN-LAST:event_op_unitActionPerformed
+
+    private void OPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OPActionPerformed
+op_list.setEnabled(true);
+op_list.setVisible(true);
+speciality_list.setVisible(false);// TODO add your handling code here:
+    }//GEN-LAST:event_OPActionPerformed
+
+    private void op_listActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_op_listActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_op_listActionPerformed
+
+    private void SpecialityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SpecialityFocusGained
+   op_list.setVisible(false);
+speciality_list.setVisible(true);   
+speciality_list.setEditable(true);// TODO add your handling code here:
+    }//GEN-LAST:event_SpecialityFocusGained
+
+    private void SpecialityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SpecialityActionPerformed
+speciality_list.setEnabled(true);
+op_list.setVisible(false);// TODO add your handling code here:
+    }//GEN-LAST:event_SpecialityActionPerformed
+
+    private void speciality_listActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speciality_listActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_speciality_listActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(OldPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(OldPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(OldPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(OldPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new OldPatient().setVisible(true);
+            }
+        });
+    }
+private Timer timer;
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton Casuality;
+    private javax.swing.JRadioButton OP;
+    private javax.swing.JRadioButton Speciality;
+    private javax.swing.JTextArea address;
+    private javax.swing.JTextField age;
+    private javax.swing.ButtonGroup bg1;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel clear;
+    private javax.swing.JTextField cr_number;
+    private javax.swing.JTextField date;
+    private javax.swing.JRadioButton female;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel label1;
+    private javax.swing.JLabel label10;
+    private javax.swing.JLabel label11;
+    private javax.swing.JLabel label12;
+    private javax.swing.JLabel label13;
+    private javax.swing.JLabel label2;
+    private javax.swing.JLabel label3;
+    private javax.swing.JLabel label4;
+    private javax.swing.JLabel label5;
+    private javax.swing.JLabel label6;
+    private javax.swing.JLabel label7;
+    private javax.swing.JLabel label8;
+    private javax.swing.JLabel label9;
+    private javax.swing.JRadioButton male;
+    private javax.swing.JTextField name;
+    private javax.swing.JComboBox<String> op_list;
+    private javax.swing.JTextField op_number;
+    private javax.swing.JComboBox<String> op_unit;
+    private javax.swing.JTextField phone;
+    private javax.swing.JTextField previous_visit;
+    private javax.swing.JLabel print;
+    private javax.swing.JLabel print1;
+    private javax.swing.JComboBox<String> reference;
+    private javax.swing.JLabel save;
+    private javax.swing.JSeparator sep1;
+    private javax.swing.JSeparator sep2;
+    private javax.swing.JSeparator sep3;
+    private javax.swing.JSeparator sep4;
+    private javax.swing.JSeparator sep5;
+    private javax.swing.JSeparator sep7;
+    private javax.swing.JSeparator sep8;
+    private javax.swing.JComboBox<String> speciality_list;
+    private javax.swing.JLabel token;
+    private javax.swing.JLabel token1;
+    private javax.swing.JLabel update;
+    // End of variables declaration//GEN-END:variables
+}
