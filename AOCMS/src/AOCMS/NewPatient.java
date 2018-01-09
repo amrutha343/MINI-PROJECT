@@ -53,9 +53,9 @@ public NewPatient(int tokenvalue)  //constructor to take token value passed from
         Graphics2D g2d = (Graphics2D)g;
         g2d.translate(pf.getImageableX(), pf.getImageableY());
     g.setFont(new Font("TimesRoman", Font.BOLD, 12));     
-    g.drawString("         GOVERNMENT MEDICAL COLLEGE" ,100,100);
-    g.drawString("                       Mulankunnathukavu," ,100,110);
-    g.drawString("                       Thrissur, 680531" ,100,120);
+    g.drawString("         Address line 1" ,100,100);
+    g.drawString("                       line 2," ,100,110);
+    g.drawString("                       line 3" ,100,120);
     g.setFont(new Font("TimesRoman", Font.PLAIN, 12)); 
     g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,125);
     g.drawString("                            |   OP TICKET  |         ",100,135);
@@ -71,9 +71,9 @@ public NewPatient(int tokenvalue)  //constructor to take token value passed from
     g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,215);
     g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,500);
     g.setFont(new Font("TimesRoman", Font.BOLD, 12)); 
-    g.drawString(       "          Vidya Academy of Science & Technology ",100,510 );
-    g.drawString(       "                     P.O. Thalakottukara",100,520 );
-    g.drawString(       "                 Thrissur, Kerala 680501",100,530);
+    g.drawString(       "          Sponser address 1 ",100,510 );
+    g.drawString(       "                     line 2",100,520 );
+    g.drawString(       "                 line 3",100,530);
     g.setFont(new Font("TimesRoman", Font.PLAIN, 12)); 
     g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,540);
   //--------------------------------------------------------------------------------------------------------------  
@@ -81,9 +81,9 @@ public NewPatient(int tokenvalue)  //constructor to take token value passed from
     {
     g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,575);
     g.setFont(new Font("TimesRoman", Font.BOLD, 12)); 
-    g.drawString("         GOVERNMENT MEDICAL COLLEGE" ,100,600);
-    g.drawString("                       Mulankunnathukavu," ,100,610);
-    g.drawString("                       Thrissur, 680531" ,100,620);
+    g.drawString("        address line 1" ,100,600);
+    g.drawString("                      line 2" ,100,610);
+    g.drawString("                       line 3" ,100,620);
     g.setFont(new Font("TimesRoman", Font.PLAIN, 12)); 
     g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,625);
     g.drawString(op_unit.getSelectedItem()+"          |    TOKEN    |         DATE:"+date.getText(),100,635);
@@ -99,9 +99,9 @@ public NewPatient(int tokenvalue)  //constructor to take token value passed from
     g.setFont(new Font("TimesRoman", Font.PLAIN, 12));
     g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,725);
     g.setFont(new Font("TimesRoman", Font.BOLD, 12)); 
-    g.drawString("     Vidya Academy of Science & Technology",100,735);
-    g.drawString(       "                  P.O. Thalakottukara ",100,745 );
-    g.drawString(       "                     Thrissur-680501",100,755 );
+    g.drawString("     sponser address 1",100,735);
+    g.drawString(       "                  line 2 ",100,745 );
+    g.drawString(       "                     line 3",100,755 );
     g.setFont(new Font("TimesRoman", Font.PLAIN, 12)); 
     g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,760);
     
@@ -898,7 +898,7 @@ catch(Exception e)
 try
 {
 Class.forName("java.sql.Driver");	
-cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/aocms","root","amrutha1996*");
+cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/aocms","root","*********");
         sql="select * from patients;";
 	st=cn.createStatement();
 	rs=st.executeQuery(sql);
