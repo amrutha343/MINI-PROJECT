@@ -3,7 +3,9 @@ Automated OP Counter Management System- AOCMS
 
 This project was done as a part of my college mini project. 
 This software was made for the reception use at Government Medical College, Thrissur.
+
 Tools used: Netbeans-JAVA and MySQL
+
 Objectives:
 
 Module 1: To register the basic details of new patients and allot them a 
