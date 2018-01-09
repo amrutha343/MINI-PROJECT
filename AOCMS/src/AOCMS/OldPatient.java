@@ -68,9 +68,9 @@ public OldPatient(int tokenvalue)
         /* Now we perform our rendering */
         
     g.setFont(new Font("TimesRoman", Font.BOLD, 12)); 
-    g.drawString("      GOVERNMENT MEDICAL COLLEGE" ,100,100);
-    g.drawString("                       Mulankunnathukavu," ,100,110);
-    g.drawString("                       Thrissur, 680531" ,100,120);
+    g.drawString("      Address line 1" ,100,100);
+    g.drawString("                      Address line 2" ,100,110);
+    g.drawString("                       line 31" ,100,120);
     g.setFont(new Font("TimesRoman", Font.PLAIN, 12)); 
     g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,125);
     g.drawString(""+op_unit.getSelectedItem()+"           |    TOKEN    |         "+date.getText(),100,135);
@@ -86,9 +86,9 @@ public OldPatient(int tokenvalue)
     g.setFont(new Font("TimesRoman", Font.PLAIN, 12)); 
     g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,220);
     g.setFont(new Font("TimesRoman", Font.BOLD, 12)); 
-    g.drawString("     Vidya Academy of Science & Technology",100,230);
-    g.drawString(       "                  P.O. Thalakottukara ",100,240 );
-    g.drawString(       "                     Thrissur-680501",100,250 );
+    g.drawString("     Sponser address 1",100,230);
+    g.drawString(       "                  address 2 ",100,240 );
+    g.drawString(       "                     line 3",100,250 );
     g.setFont(new Font("TimesRoman", Font.PLAIN, 12)); 
     g.drawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",100,255);
 
@@ -1041,7 +1041,7 @@ try
 {
    //Establish connection to the MySQL Database
 Class.forName("java.sql.Driver");	
-cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/aocms","root","amrutha1996*");
+cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/aocms","root","***********");
 
 	//Below is the code for creating an sql statement having all records to browse
 sql="select * from patients;";
