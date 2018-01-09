@@ -786,7 +786,7 @@ try
 {
    //Establish connection to the MySQL Database
 Class.forName("java.sql.Driver");	
-cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/aocms","root","amrutha1996*");
+cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/aocms","root","*********");
 
 	
 sql="select * from patients;";
@@ -1255,33 +1255,15 @@ cases.setVisible(true);
 dcm.removeAllElements();
 dcm.addElement("ALL");
 dcm.addElement("NULL");
-dcm.addElement("LYMPHOMA (NHL, DLBCL,HODGKIN’S DISEASE) ");
-dcm.addElement("SARCOMA (SYNOVIAL SARCOMA, LIPOSARCOMA) ");
-dcm.addElement("MALIGNANT MELANOMA");
-dcm.addElement("SKIN");
-dcm.addElement("LEUKEMIA(ALL, AML, CML,CLL) ");
-dcm.addElement("LUNG(BRONCHOGENIC CARCINOMA) ");
-dcm.addElement("ESOPHAGUS");
-dcm.addElement("STOMACH");	
-dcm.addElement("GE JUNCTION");
-dcm.addElement("OG JUNCTION");
-dcm.addElement("CAECUM");
-dcm.addElement("RECTUM");
-dcm.addElement("RECTOSIGMOID");
-dcm.addElement("ANAL CANAL");
-dcm.addElement("ANUS");
-dcm.addElement("COLON");
-dcm.addElement("BLADDER(GALL BLADDER, URINARY BLADDER) ");
-dcm.addElement("PROSTATE");
-dcm.addElement("RENAL CELL CARCINOMA(KIDNEY) ");
-dcm.addElement("TESTIS");
-dcm.addElement("PENIS");
-dcm.addElement("HEPATO CELLULAR CARCINOMA(LIVER) ");
-dcm.addElement("PERIAMPULLARY CARCINOMA (BILE DUCT) ");
-dcm.addElement("MULTIPLE MYELOMA");
-dcm.addElement("UNKNOWN PRIMARY");
-dcm.addElement("INTESINES(SMALL INTESTINE, LARGE INTESTINE) ");
-dcm.addElement("THYROID GLAND");
+dcm.addElement("Test Case ");
+dcm.addElement("Test Case ");
+dcm.addElement("Test Case ");
+dcm.addElement("Test Case ");
+dcm.addElement("Test Case ");
+dcm.addElement("Test Case ");
+dcm.addElement("Test Case ");
+dcm.addElement("Test Case ");
+
 cases.setModel(dcm);   
 }
     }//GEN-LAST:event_oActionPerformed
@@ -1296,42 +1278,14 @@ dcm.removeAllElements();
 cases.setVisible(true);
    dcm.addElement("ALL");
    dcm.addElement("NULL");
-dcm.addElement("LIP ");
-dcm.addElement("ORAL CAVITY-  TONGUE ");
-dcm.addElement("ORAL CAVITY-  FLOOR OF MOUTH ");
-dcm.addElement("ORAL CAVITY-   PALATE ");
-dcm.addElement("ORAL CAVITY-  CHEEK MUCOSA ");
-dcm.addElement("ORAL CAVITY-   BUCCAL MUCOSA ");
-dcm.addElement("ORAL CAVITY-   RETROMOLAR AREA ");
-dcm.addElement("PHARYNX-  TONSIL ");
-dcm.addElement("PHARYNX-   UVULA ");
-dcm.addElement("PHARYNX-  VALLECULA ");
-dcm.addElement("PHARYNX-  OROPHARYNX ");
-dcm.addElement("PHARYNX-   NASOPHARYNX ");
-dcm.addElement("PHARYNX-  PYRIFORM SINUS ");
-dcm.addElement("PHARYNX-  POST CRICOID ");
-dcm.addElement("PHARYNX-  HYPOPHARYNX ");
-dcm.addElement("LARYNX-   EPIGLOTTIS ");
-dcm.addElement("LARYNX-    GLOTTIS ");
-dcm.addElement("LARYNX-   SUPRAGLOTTIS ");
-dcm.addElement("NASAL CAVITY ");
-dcm.addElement(" MAXILLARY SINUS ");
-dcm.addElement("PAROTID GLAND ");
-dcm.addElement("SUBMANDIBULAR GLAND ");
-dcm.addElement("SUBLINGUAL GLAND ");
-dcm.addElement("SALIVARY GLAND ");
-dcm.addElement("VULVA ");
-dcm.addElement("VAGINA ");
-dcm.addElement("CERVIX ");
-dcm.addElement("ENDOMETRIUM ");
-dcm.addElement("UTERUS ");
-dcm.addElement("OVARY ");
-dcm.addElement("FALLOPIAN TUBE");
-dcm.addElement("PLACENTA ");
-dcm.addElement("BREAST ");
-dcm.addElement("BRAIN-  ASTROCYTOMA ");
-dcm.addElement("BRAIN-  GLIOBLASTOMA MULTIFORME ");
-dcm.addElement("BRAIN-  MEDULOBLASTOMA ");
+   dcm.addElement("Test Case ");
+dcm.addElement("Test Case ");
+dcm.addElement("Test Case ");
+dcm.addElement("Test Case ");
+dcm.addElement("Test Case ");
+dcm.addElement("Test Case ");
+dcm.addElement("Test Case ");
+dcm.addElement("Test Case ");
 
 cases.setModel(dcm); 
 }
